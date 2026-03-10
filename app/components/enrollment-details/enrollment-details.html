@@ -1,0 +1,40 @@
+<div class="enrollments-section">
+  <h2>Enrollment Details</h2>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <ng-container *ngIf="enrollments$ | async as enrollments">
+    <div *ngIf="enrollments.length > 0" class="enrollments-table-container">
+      <table class="enrollments-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Student</th>
+            <th>Course</th>
+            <th>Enrollment Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of enrollments" [ngClass]="'status-' + e.status">
+            <td>{{ e.id }}</td>
+            <td>{{ e.studentName }}</td>
+            <td>{{ e.courseName }}</td>
+            <td>{{ e.enrollmentDate | date:'shortDate' }}</td>
+            <td>
+              <span [ngClass]="'status-badge status-' + e.status">
+                {{ e.status | uppercase }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="enrollments.length === 0" class="no-data">
+      <p>No enrollments found.</p>
+    </div>
+  </ng-container>
+</div>

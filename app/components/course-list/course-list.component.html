@@ -1,0 +1,35 @@
+<h2>Courses</h2>
+<div class="search-container">
+  <input 
+    type="text" 
+    placeholder="Search courses by title..." 
+    [(ngModel)]="searchText"
+    class="search-input"
+  >
+</div>
+
+<div *ngIf="isLoading" class="loading">Loading courses...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="!isLoading && courses.length > 0" class="courses-list">
+  <div class="course-card" *ngFor="let c of courses | filterBy:searchText:'title'">
+    <div class="course-header">
+      <h3>{{ c.title }}</h3>
+      <span 
+        class="seats-badge" 
+        [appLimitedSeats]="c.seats" 
+        [threshold]="2"
+      >
+        Seats: {{ c.seats | highlightLimited:2 }}
+      </span>
+    </div>
+    <div class="course-details">
+      <p><strong>Instructor:</strong> {{ c.instructor || 'TBD' }}</p>
+      <p><strong>Duration:</strong> {{ c.duration || 'TBD' }}</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isLoading && courses.length === 0" class="no-data">
+  No courses found.
+</div>

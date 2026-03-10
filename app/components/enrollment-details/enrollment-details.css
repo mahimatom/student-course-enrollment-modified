@@ -1,0 +1,127 @@
+.enrollments-section {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #1976d2;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.enrollments-table-container {
+  overflow-x: auto;
+  margin-top: 2rem;
+}
+
+.enrollments-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.enrollments-table thead {
+  background-color: #f5f5f5;
+}
+
+.enrollments-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid #1976d2;
+  color: #1976d2;
+}
+
+.enrollments-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.enrollments-table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.enrollments-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.enrollments-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: center;
+  min-width: 80px;
+}
+
+.status-badge.status-active {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+  border: 1px solid #2e7d32;
+}
+
+.status-badge.status-completed {
+  background-color: #b3e5fc;
+  color: #01579b;
+  border: 1px solid #01579b;
+}
+
+.status-badge.status-pending {
+  background-color: #ffe0b2;
+  color: #e65100;
+  border: 1px solid #e65100;
+}
+
+.loading,
+.error,
+.no-data {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.loading {
+  color: #666;
+}
+
+.error {
+  color: #c62828;
+  background-color: #ffebee;
+  border: 2px solid #e91e63;
+  border-radius: 4px;
+}
+
+.no-data {
+  background-color: #e3f2fd;
+  border: 2px solid #2196f3;
+  border-radius: 4px;
+  color: #1565c0;
+}
+
+@media (max-width: 768px) {
+  .enrollments-section {
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .enrollments-table th,
+  .enrollments-table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}

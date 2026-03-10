@@ -1,0 +1,11 @@
+<nav>
+  <div class="nav-links">
+    <a routerLink="/students" routerLinkActive="active">Students</a> | 
+    <a routerLink="/courses" routerLinkActive="active">Courses</a> | 
+    <a routerLink="/register" routerLinkActive="active">Register Student</a> |
+    <a routerLink="/enroll" routerLinkActive="active">Enroll (Template)</a> |
+    <a routerLink="/enroll-reactive" routerLinkActive="active">Enroll (Reactive)</a> |
+    <a routerLink="/enrollments" routerLinkActive="active">Enrollments</a>
+  </div>
+  <button (click)="toggleAuth()" class="auth-btn">{{ isAuthenticated ? 'Logout' : 'Login' }}</button>
+</nav>

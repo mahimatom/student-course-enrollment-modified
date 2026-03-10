@@ -1,0 +1,69 @@
+<div class="course-list-container">
+  <h2>Available Courses</h2>
+
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+    <button (click)="loadCourses()">Retry</button>
+  </div>
+
+  <ng-container *ngIf="courses$ | async as courses">
+    <div class="courses-section">
+      <div class="search-container">
+        <label for="search">Search Courses:</label>
+        <input
+          id="search"
+          type="text"
+          class="search-input"
+          [(ngModel)]="searchText"
+          placeholder="Search by course title..."
+        />
+      </div>
+
+      <div *ngIf="(courses | filterBy : searchText : 'title').length > 0" class="courses-list">
+      <div
+        *ngFor="let course of courses | filterBy : searchText : 'title'"
+        class="course-card"
+        [appLimitedSeats]="course.seats"
+        [threshold]="2"
+      >
+        <div class="course-header">
+          <h3>{{ course.title }}</h3>
+          <span class="seats-badge" [class.limited]="course.seats <= 2">
+            {{ course.seats | highlightLimited }}
+          </span>
+        </div>
+
+        <div class="course-details">
+          <div class="detail-item">
+            <strong>Instructor:</strong>
+            <span>{{ course.instructor || 'TBA' }}</span>
+          </div>
+          <div class="detail-item">
+            <strong>Duration:</strong>
+            <span>{{ course.duration || 'N/A' }}</span>
+          </div>
+          <div class="detail-item availability">
+            <strong>Available Seats:</strong>
+            <span [class.limited]="course.seats <= 2">{{ course.seats }}</span>
+          </div>
+        </div>
+
+        <div
+          *ngIf="course.seats <= 2"
+          class="limited-warning"
+        >
+          ⚠️ Limited seats available! Enroll now.
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="(courses | filterBy : searchText : 'title').length === 0" class="no-data">
+      <p>No courses found matching your search.</p>
+    </div>
+
+      <div class="total-courses">
+        <strong>Total Courses:</strong> {{ (courses | filterBy : searchText : 'title').length }} / {{ courses.length }}
+      </div>
+    </div>
+  </ng-container>
+</div>

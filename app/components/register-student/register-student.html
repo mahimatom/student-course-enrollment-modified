@@ -1,0 +1,83 @@
+<div class="register-container">
+  <h2>Register New Student</h2>
+  <p class="intro-text">Fill out the form below to register a new student in the system.</p>
+
+  <div *ngIf="successMessage" class="success-message">
+    ✓ {{ successMessage }}
+    <p class="redirect-text">Redirecting to Students page...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    ✗ {{ errorMessage }}
+    <button type="button" (click)="errorMessage = ''" class="close-btn">Close</button>
+  </div>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
+    <div class="form-group">
+      <label for="name">Full Name:</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        class="form-control"
+        placeholder="Enter student's full name"
+      />
+      <div *ngIf="submitted && f['name'].errors" class="error-text">
+        <span *ngIf="f['name'].errors['required']">Name is required</span>
+        <span *ngIf="f['name'].errors['minlength']">Name must be at least 2 characters</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address:</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="form-control"
+        placeholder="Enter student's email address"
+      />
+      <div *ngIf="submitted && f['email'].errors" class="error-text">
+        <span *ngIf="f['email'].errors['required']">Email is required</span>
+        <span *ngIf="f['email'].errors['email']">Please enter a valid email address</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="department">Department:</label>
+      <select id="department" formControlName="department" class="form-control">
+        <option value="">Select a department</option>
+        <option *ngFor="let dept of departments" [value]="dept">
+          {{ dept }}
+        </option>
+      </select>
+      <div *ngIf="submitted && f['department'].errors" class="error-text">
+        <span *ngIf="f['department'].errors['required']">Department is required</span>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button
+        type="submit"
+        class="submit-btn"
+        [disabled]="isSubmitting"
+      >
+        {{ isSubmitting ? 'Registering...' : 'Register Student' }}
+      </button>
+      <button type="reset" class="reset-btn" [disabled]="isSubmitting">
+        Clear Form
+      </button>
+    </div>
+
+    <div class="form-info">
+      <p><strong>Form Status:</strong> {{ registrationForm.valid && !submitted ? '✓ Ready to submit' : '✗ Please complete all fields' }}</p>
+    </div>
+  </form>
+
+  <div class="info-box">
+    <h3>Available Departments:</h3>
+    <ul>
+      <li *ngFor="let dept of departments">{{ dept }}</li>
+    </ul>
+  </div>
+</div>

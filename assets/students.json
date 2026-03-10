@@ -1,0 +1,12 @@
+{
+  "students": [
+    {"id": 1, "name": "Asha", "email": "asha@gmail.com", "department": "CSE"},
+    {"id": 2, "name": "Bala", "email": "bala@gmail.com", "department": "ECE"},
+    {"id": 3, "name": "Charu", "email": "charu@gmail.com", "department": "CSE"},
+    {"id": 4, "name": "Dhanesh", "email": "dhanesh@gmail.com", "department": "ME"},
+    {"id": 5, "name": "Emilia", "email": "emilia@gmail.com", "department": "CSE"},
+    {"id": 6, "name": "Farhan", "email": "farhan@gmail.com", "department": "ECE"},
+    {"id": 7, "name": "Gita", "email": "gita@gmail.com", "department": "ME"},
+    {"id": 8, "name": "Harsh", "email": "harsh@gmail.com", "department": "CSE"}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "enrollments": [
+    {"id": 1, "studentId": 1, "courseId": 1, "enrollmentDate": "2024-01-15", "status": "active"},
+    {"id": 2, "studentId": 2, "courseId": 2, "enrollmentDate": "2024-01-16", "status": "active"},
+    {"id": 3, "studentId": 3, "courseId": 3, "enrollmentDate": "2024-01-17", "status": "completed"},
+    {"id": 4, "studentId": 1, "courseId": 3, "enrollmentDate": "2024-02-01", "status": "active"}
+  ]
+}

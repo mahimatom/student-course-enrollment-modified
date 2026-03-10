@@ -1,0 +1,12 @@
+{
+  "courses": [
+    {"id": 1, "title": "Angular", "seats": 5, "instructor": "Dr. Smith", "duration": "4 weeks"},
+    {"id": 2, "title": "Python", "seats": 3, "instructor": "Dr. Patel", "duration": "6 weeks"},
+    {"id": 3, "title": "React", "seats": 8, "instructor": "Dr. Johnson", "duration": "5 weeks"},
+    {"id": 4, "title": "Java", "seats": 6, "instructor": "Dr. Williams", "duration": "8 weeks"},
+    {"id": 5, "title": "TypeScript", "seats": 7, "instructor": "Dr. Brown", "duration": "4 weeks"},
+    {"id": 6, "title": "Node.js", "seats": 4, "instructor": "Dr. Davis", "duration": "5 weeks"},
+    {"id": 7, "title": "MongoDB", "seats": 5, "instructor": "Dr. Miller", "duration": "3 weeks"},
+    {"id": 8, "title": "SQL", "seats": 10, "instructor": "Dr. Wilson", "duration": "6 weeks"}
+  ]
+}

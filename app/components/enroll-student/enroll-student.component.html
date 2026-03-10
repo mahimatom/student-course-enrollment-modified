@@ -1,0 +1,13 @@
+<h2>Enroll Student</h2>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <div>
+    <label>Student ID:</label>
+    <input type="number" name="sid" ngModel required>
+  </div>
+  <div>
+    <label>Course ID:</label>
+    <input type="number" name="cid" ngModel required>
+  </div>
+  <button type="submit" [disabled]="f.invalid">Enroll</button>
+  <div *ngIf="f.invalid && f.touched">Form Invalid - Please fill all fields</div>
+</form>

@@ -1,0 +1,53 @@
+<div class="student-list-container">
+  <h2>Registered Students</h2>
+
+  <ng-container *ngIf="students$ | async as students">
+    <div class="search-container">
+      <label for="search">Search Students:</label>
+      <input
+        id="search"
+        type="text"
+        class="search-input"
+        [(ngModel)]="searchText"
+        placeholder="Search by name or email..."
+      />
+    </div>
+
+    <div *ngIf="(students | filterBy : searchText : 'name').length > 0" class="students-table-wrapper">
+      <table class="students-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let student of students | filterBy : searchText : 'name'"
+            [appHighlight]="'#f0f8ff'"
+          >
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.department || 'N/A' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="(students | filterBy : searchText : 'name').length === 0" class="no-data">
+      <p>No students found matching your search.</p>
+    </div>
+
+    <div class="total-students">
+      <strong>Total Students:</strong> {{ (students | filterBy : searchText : 'name').length }} / {{ students.length }}
+    </div>
+  </ng-container>
+
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+    <button (click)="loadStudents()">Retry</button>
+  </div>
+</div>

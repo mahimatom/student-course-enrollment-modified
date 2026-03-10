@@ -1,0 +1,71 @@
+<div class="enroll-container">
+  <h2>Enroll Student in Course (Template-Driven Form)</h2>
+
+  <form #enrollForm="ngForm" (ngSubmit)="onSubmit(enrollForm)" class="enrollment-form">
+    <div class="form-group">
+      <label for="studentId">Select Student:</label>
+      <select 
+        #studentIdControl="ngModel"
+        id="studentId"
+        name="studentId"
+        ngModel
+        required
+        class="form-control"
+      >
+        <option value="">Choose a student...</option>
+        <option *ngFor="let student of students$ | async" [value]="student.id">
+          {{ student.name }} ({{ student.email }})
+        </option>
+      </select>
+      <div
+        *ngIf="studentIdControl.touched && studentIdControl.hasError('required')"
+        class="error-message"
+      >
+        Student selection is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="courseId">Select Course:</label>
+      <select 
+        #courseIdControl="ngModel"
+        id="courseId"
+        name="courseId"
+        ngModel
+        required
+        class="form-control"
+      >
+        <option value="">Choose a course...</option>
+        <option *ngFor="let course of courses$ | async" [value]="course.id">
+          {{ course.title }} ({{ course.seats }} seats available)
+        </option>
+      </select>
+      <div
+        *ngIf="courseIdControl.touched && courseIdControl.hasError('required')"
+        class="error-message"
+      >
+        Course selection is required
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="submit-btn" [disabled]="enrollForm.invalid">
+        Enroll Student
+      </button>
+      <button type="reset" class="reset-btn">Clear Form</button>
+    </div>
+
+    <div
+      *ngIf="enrollForm.invalid && enrollForm.touched && !enrollForm.valid"
+      class="form-error-summary"
+    >
+      Please fill in all required fields correctly.
+    </div>
+  </form>
+
+  <div class="info-box">
+    <h3>Valid IDs (for testing):</h3>
+    <p><strong>Student IDs:</strong> 1-8</p>
+    <p><strong>Course IDs:</strong> 1-8</p>
+  </div>
+</div>
